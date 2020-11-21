@@ -3,6 +3,7 @@
 export("%>%")
 export(cached_result)
 export(do_things)
+export(get_args)
 export(loud)
 export(with_package_bindings)
 importFrom(magrittr,"%>%")

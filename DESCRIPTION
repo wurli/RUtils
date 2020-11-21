@@ -1,15 +1,13 @@
-Package: test
-Title: What the Package Does (One Line, Title Case)
+Package: RUtils
+Title: A place for me to keep functions I'm messing around with
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+    person(given = "Jacob",
+           family = "Scott",
+           role = "cre",
+           email = "jake12358@gmail.com")
+Description: A collection of misc functions.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
@@ -18,4 +16,6 @@ Imports:
     magrittr,
     rlang,
     purrr,
-    memoise
+    memoise,
+    base,
+    utils

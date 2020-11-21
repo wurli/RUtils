@@ -33,5 +33,5 @@ runif2(2)
 
 # These give the same results
 runif2(2, TRUE)
-runif2(2, TRUE)s
+runif2(2, TRUE)
 }

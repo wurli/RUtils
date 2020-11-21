@@ -9,7 +9,8 @@
 #' @return The result of calling a memoised function
 #' @export
 #'
-#' @examples runif2 <- function(n, use_cached_result = FALSE) {
+#' @examples
+#' runif2 <- function(n, use_cached_result = FALSE) {
 #'
 #' if (use_cached_result) { return(cached_result()) }
 #'
@@ -25,7 +26,7 @@
 #'
 #' # These give the same results
 #' runif2(2, TRUE)
-#' runif2(2, TRUE)s
+#' runif2(2, TRUE)
 cached_result <- function() {
 
   # Get the call that called this function

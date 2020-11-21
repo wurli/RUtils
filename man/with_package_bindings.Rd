@@ -15,8 +15,8 @@ with_package_bindings(expr, ...)
 The result of the evaluated expression
 }
 \description{
-Thin wrapper to \code{rlang::local_bindings}
+Temporarily change bindings in this package
 }
 \examples{
-with_package_bindings(do_things(1), thing_1 = loud(thing_1))
+with_package_bindings(do_things(1), do_things = loud(do_things))
 }

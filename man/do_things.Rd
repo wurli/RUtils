@@ -6,6 +6,9 @@
 \usage{
 do_things(a = -1, b = -3)
 }
+\arguments{
+\item{a, b, }{Toy args}
+}
 \description{
 Toy function for testing
 }
