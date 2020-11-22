@@ -1,4 +1,4 @@
-#' Evaluate the memoised version of a function
+#' Switch to the memoised version of a function
 #'
 #' This function is intended to be called within other
 #' functions. When called within a function `foo` it searches
@@ -71,4 +71,69 @@ cached_result <- function() {
   # Call the memoised function
   do.call(memoised_version, args)
 }
+
+#' The uniform distribution
+#'
+#' Imports stats::runif for demoing memoise_package_fns
+#' @export
+runif <- stats::runif
+
+#' Replace package functions with their memoised versions
+#'
+#' You can only memoise functions which are part of
+#' the package!
+#'
+#' @param groups The groups of functions to memoise
+#' @param functions The names of the functions in the groups
+#' @param unmemoise Whether to unmemoise instead of memoise
+#'
+#' @return Quietly returns NULL
+#' @export
+#' @examples
+#' # First make sure `runif` is unmemoised
+#' memoise_package_fns(functions = list(other = "runif"), unmemoise = TRUE)
+#'
+#' # Gives different values as expected
+#' RUtils::runif(2)
+#' RUtils::runif(2)
+#'
+#' # Now memoise `runif`
+#' memoise_package_fns(functions = list(other = "runif"), unmemoise = FALSE)
+#'
+#' # Gives the same value due to memoisation
+#' RUtils::runif(2)
+#' RUtils::runif(2)
+memoise_package_fns <- function(groups = c("read_fns", "slow_fns", "other"),
+                                functions = list(read_fns = c(),
+                                                 slow_fns = c(),
+                                                 other = "runif"),
+                                unmemoise = FALSE) {
+
+  # Get the functions to memoise/unmemoise
+  functions <- unlist(functions[groups], use.names = FALSE)
+
+  # Use this to unmemoise a function
+  unmemoise_ <- function(f) {
+    if (!memoise::is.memoised(f)) {
+      f
+    } else {
+      environment(f)$`_f`
+    }
+  }
+
+  # Functional to alter specified functions
+  memoise_fn <- if (unmemoise) unmemoise_ else memoise::memoise
+
+  # Apply functional to specified package functions
+  for (f_name in functions) {
+    f <- utils::getFromNamespace(f_name, "RUtils")
+    f <- memoise_fn(f)
+    utils::assignInMyNamespace(f_name, f)
+  }
+
+  # Return NULL
+  invisible(NULL)
+
+}
+
 

@@ -21,5 +21,4 @@ Toy function for testing \code{with_package_bindings}
 }
 \examples{
 loud(nchar)("Hi!")
-
 }

@@ -15,9 +15,10 @@ get_args(f, ...)
 A named list
 }
 \description{
-This gets all inputs to a function \code{f} when \code{...}
-is passed, including any default arguments, as a
-list in which all arguments are named.
+This gets all inputs to a function \code{f}, including
+default arguments, when the arguments in \code{...} are
+passed. All returned arguments are named, except those
+which would be in a \code{...} argument, if \code{f} has one.
 }
 \examples{
 get_args(paste, "hi", "there!")

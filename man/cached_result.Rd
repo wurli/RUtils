@@ -2,7 +2,7 @@
 % Please edit documentation in R/switch-memoised-functions.R
 \name{cached_result}
 \alias{cached_result}
-\title{Evaluate the memoised version of a function}
+\title{Switch to the memoised version of a function}
 \usage{
 cached_result()
 }
